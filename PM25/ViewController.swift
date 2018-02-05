@@ -9,6 +9,49 @@
 import UIKit
 import Crashlytics
 
+struct PM25Struct: Codable {
+    
+    var source: String
+    var version: String
+    var num_of_records: Int
+    
+    struct AreaStruct: Codable {
+        var PM2_5_AVG: CGFloat?
+        var app: String
+        var PublishTime: String
+        var fmt_opt: String
+        var WindSpeed: CGFloat?
+        var O3: CGFloat?
+        var NO2: CGFloat?
+        var Status: String
+        var SiteEngName: String
+        var NO: CGFloat?
+        var SiteName: String
+        var SiteType: String
+        var CO_8hr: CGFloat?
+        var AQI: CGFloat?
+        var Pollutant: String?
+        var PM2_5: CGFloat?
+        var gps_lat: CGFloat
+        var CO: CGFloat?
+        var timestamp: String
+        var WindDirec: CGFloat?
+        var PM10_AVG: CGFloat?
+        var gps_lon: CGFloat
+        var O3_8hr: CGFloat?
+        var NOx: CGFloat?
+        var date: String
+        var device_id: String
+        var ver_format: String
+        var PM10: CGFloat
+        var County: String
+        var SO2: CGFloat
+        var time: String
+    }
+
+    var feeds:[AreaStruct]
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -24,10 +67,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: defaultCellID)
         
-        dataArray.append("one")
-        dataArray.append("two")
-        dataArray.append("three")
-        dataArray.append("four")
+//        dataArray.append("one")
+//        dataArray.append("two")
+//        dataArray.append("three")
+//        dataArray.append("four")
+        
+        callApi()
+    }
+    
+    private func callApi() {
+        
+        if let url = URL(string: "https://pm25.lass-net.org/data/last-all-epa.json") {
+            
+            let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                
+                if error == nil, let data = data {
+                    
+                    let decoder = JSONDecoder()
+                    if let decodeData = try? decoder.decode(PM25Struct.self, from: data) {
+                        log(decodeData)
+                    } else {
+                        log("Json decode failure")
+                    }
+                    
+                } else {
+                    log("Error: \(error.debugDescription)")
+                }
+            })
+            task.resume()
+        }
+        
     }
     
     //MARK: UITableViewDelegate
@@ -43,18 +112,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    //MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("number of cell\(indexPath.row) pressed!!")
-        self.testCrash()
+        log("number of cell\(indexPath.row) pressed!!")
     }
-    
-    func testCrash() {
-        let counts = 5/count
-        print(counts)
-    }
-    
-    //MARK: UITableViewDelegate
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
