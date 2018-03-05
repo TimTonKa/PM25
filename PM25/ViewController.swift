@@ -6,51 +6,15 @@
 //  Copyright © 2018年 Tim. All rights reserved.
 //
 
+/**
+ PM2.5數值            PM10
+ value > 35 : 紫爆    value > 70
+ value > 25 : 紅爆    value > 50
+ value > 15 : 普通    value > 30
+ value < 10 : 良好    value < 20
+ */
+
 import UIKit
-import Crashlytics
-
-struct PM25Struct: Codable {
-    
-    var source: String
-    var version: String
-    var num_of_records: Int
-    
-    struct AreaStruct: Codable {
-        var PM2_5_AVG: CGFloat?
-        var app: String
-        var PublishTime: String
-        var fmt_opt: String
-        var WindSpeed: CGFloat?
-        var O3: CGFloat?
-        var NO2: CGFloat?
-        var Status: String
-        var SiteEngName: String
-        var NO: CGFloat?
-        var SiteName: String
-        var SiteType: String
-        var CO_8hr: CGFloat?
-        var AQI: CGFloat?
-        var Pollutant: String?
-        var PM2_5: CGFloat?
-        var gps_lat: CGFloat
-        var CO: CGFloat?
-        var timestamp: String
-        var WindDirec: CGFloat?
-        var PM10_AVG: CGFloat?
-        var gps_lon: CGFloat
-        var O3_8hr: CGFloat?
-        var NOx: CGFloat?
-        var date: String
-        var device_id: String
-        var ver_format: String
-        var PM10: CGFloat
-        var County: String
-        var SO2: CGFloat
-        var time: String
-    }
-
-    var feeds:[AreaStruct]
-}
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -77,26 +41,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private func callApi() {
         
-        if let url = URL(string: "https://pm25.lass-net.org/data/last-all-epa.json") {
+        HttpManager.callTaiwanPM25 { (success, data) in
             
-            let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                
-                if error == nil, let data = data {
-                    
-                    let decoder = JSONDecoder()
-                    if let decodeData = try? decoder.decode(PM25Struct.self, from: data) {
-                        log(decodeData)
-                    } else {
-                        log("Json decode failure")
-                    }
-                    
-                } else {
-                    log("Error: \(error.debugDescription)")
-                }
-            })
-            task.resume()
+            if success, let dataStruct = data {
+                log(dataStruct)
+            } else {
+                log("NONONONONONONONONO")
+            }
         }
-        
     }
     
     //MARK: UITableViewDelegate

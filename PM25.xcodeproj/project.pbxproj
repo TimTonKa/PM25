@@ -14,6 +14,7 @@
 		222AE79320240B0700E88BA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 222AE79220240B0700E88BA8 /* Assets.xcassets */; };
 		222AE79620240B0700E88BA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222AE79420240B0700E88BA8 /* LaunchScreen.storyboard */; };
 		229661C42027FC89000EB500 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229661C32027FC89000EB500 /* Logger.swift */; };
+		229661C720280880000EB500 /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229661C620280880000EB500 /* HttpManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		222AE79520240B0700E88BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		222AE79720240B0700E88BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		229661C32027FC89000EB500 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		229661C620280880000EB500 /* HttpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
 		2C4972B52D105CF2917DF207 /* Pods_PM25.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PM25.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC373E6463688CC960204EA /* Pods-PM25.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PM25.release.xcconfig"; path = "Pods/Target Support Files/Pods-PM25/Pods-PM25.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +71,7 @@
 				222AE79220240B0700E88BA8 /* Assets.xcassets */,
 				222AE79420240B0700E88BA8 /* LaunchScreen.storyboard */,
 				222AE79720240B0700E88BA8 /* Info.plist */,
+				229661C620280880000EB500 /* HttpManager.swift */,
 				229661C520280660000EB500 /* Tools */,
 			);
 			path = PM25;
@@ -239,6 +242,7 @@
 				222AE78E20240B0700E88BA8 /* ViewController.swift in Sources */,
 				229661C42027FC89000EB500 /* Logger.swift in Sources */,
 				222AE78C20240B0700E88BA8 /* AppDelegate.swift in Sources */,
+				229661C720280880000EB500 /* HttpManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
