@@ -5,6 +5,9 @@
       location = "group:PM25.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:ExportOptions.plist">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
