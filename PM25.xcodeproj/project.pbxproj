@@ -48,6 +48,7 @@
 			isa = PBXGroup;
 			children = (
 				222AE78A20240B0700E88BA8 /* PM25 */,
+				22C5A70F204E9987000CFD5F /* PM25_ipa */,
 				222AE78920240B0700E88BA8 /* Products */,
 				65F6E89704FE03993F1B6684 /* Pods */,
 				3DE35B9EC62F0E06AE7F83AD /* Frameworks */,
@@ -83,6 +84,13 @@
 				229661C32027FC89000EB500 /* Logger.swift */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		22C5A70F204E9987000CFD5F /* PM25_ipa */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PM25_ipa;
 			sourceTree = "<group>";
 		};
 		3DE35B9EC62F0E06AE7F83AD /* Frameworks */ = {
